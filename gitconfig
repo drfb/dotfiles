@@ -1,0 +1,12 @@
+[user]
+    email = user@domain
+    name = John Doe
+[alias]
+    ck = checkout
+    cm = commit -m
+    st = status
+    am = commit --amend
+    ls = log --pretty=format:"%C(green)%h\\ %Creset%s%Cblue\\ [%cn]\\ %C(yellow)[%ad]%Cred%d" --decorate --date=relative
+    br = branch
+[core]
+    editor = vim
