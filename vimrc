@@ -1,52 +1,9 @@
-syntax on
-filetype plugin indent on
-
-
+" Vundle settings
+filetype off
 set nocompatible
-set number
-set autoread
-set encoding=utf-8
-set fileencoding=utf-8
-set backspace=indent,eol,start
-set hidden
-set fileformat=unix
-set fileformats=unix,dos
-set viminfo='100,f1
-set lazyredraw
-set showmatch
-set incsearch
-set hlsearch
-set smartcase
-set ignorecase
-set expandtab
-set autoindent
-set smartindent
-set shiftwidth=4
-set softtabstop=4
-set scrolloff=3
-set smarttab
-set ruler
-set rulerformat=%38(%#TabLine#\ %-t\ %m\ %#MatchParen#\ %12(%l:%c%V%)\ %k\ %4p%%%)
-set undolevels=1000
-set colorcolumn=80
-" set textwidth=80
-set pastetoggle=<f2>
-" remove the .ext~ files, but not the swapfiles
-set nobackup
-set writebackup
-set noswapfile
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.pyc
-
-
-highlight ColorColumn ctermbg=lightgrey guibg=lightgrey
-highlight ExtraWhitespace ctermbg=grey
-match ExtraWhitespace /\s\+$/
-
-
-" ---------------------- PLUGIN CONFIGURATION ----------------------
-let &runtimepath.=',$HOME/.vim/bundle/Vundle.vim'
+set runtimepath+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
-Plugin 'gmarik/Vundle.vim'
+Plugin 'VundleVim/Vundle.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/syntastic'
 Plugin 'kien/ctrlp.vim'
@@ -54,25 +11,69 @@ Plugin 'tpope/vim-surround'
 Plugin 'bling/vim-airline'
 Plugin 'roman/golden-ratio'
 Plugin 'raimondi/delimitmate'
-Plugin 'skammer/vim-css-color'
-Plugin 'hail2u/vim-css3-syntax'
+Plugin 'morhetz/gruvbox'
 call vundle#end()
-" -------------------- END PLUGIN CONFIGURATION --------------------
+
+" General settings
+syntax on
+filetype plugin on
+
+set number
+set encoding=utf-8
+set hlsearch
+set smartcase
+set ignorecase
+set incsearch
+set autoindent
+set shiftwidth=4
+set softtabstop=4
+set expandtab
+set smartindent
+set smarttab
+set cursorline
+set scrolloff=15
+set undolevels=1000
+set colorcolumn=80,100
+
+autocmd Filetype html,js setlocal sts=2 sw=2
+
+" Colors
+colorscheme gruvbox
+set background=dark
+" hi ColorColumn ctermbg=darkblue
+hi ExtraWhitespace ctermbg=darkred
+match ExtraWhitespace /\s\+$/
+
+" Backups and swap management
+if !isdirectory(expand("~/.vim/tmp"))
+    call mkdir(expand("~/.vim/tmp"), "p")
+endif
+
+set backup
+set undodir=~/.vim/tmp/
+set backupdir=~/.vim/tmp/
+set dir=~/.vim/tmp/
 
 
-let mapleader = ","
-let NERDTreeIgnore = ['\.pyc$']
+" Key mappings
+let mapleader = "\<SPACE>"
 
-nnoremap <leader>z :NERDTreeToggle<return>
-nnoremap <leader><esc> :noh<return><esc>
-nnoremap <leader>l :tabn<return>
-nnoremap <leader>h :tabp<return>
-nnoremap <leader>n :tabnew<return>
-nnoremap <leader>v :vnew<return>
+noremap <SPACE> <Nop>
+noremap <Leader>c :noh<CR>
+noremap <Leader>l :set nonumber!<CR>
+noremap <Leader>t :NERDTreeToggle<CR>
+noremap <C-J> <C-W>j<C-W>_
+noremap <C-K> <C-W>k<C-W>_
+noremap <C-H> <C-W>h<C-W>_
+noremap <C-L> <C-W>l<C-W>_
 
-
-autocmd Filetype html setlocal ts=2 sw=2 expandtab
-autocmd Filetype js setlocal ts=2 sw=2 expandtab
-
-" enable matchit plugin which ships with vim and greatly enhances '%'
+" Enable matchit plugin which ships with vim and greatly enhances '%'
 runtime macros/matchit.vim
+
+" Airline plugin settings
+" Requires pre-patched powerline fonts
+" https://github.com/powerline/fonts
+let g:airline_powerline_fonts = 1
+
+" Nerdtree plugin settings
+let NERDTreeIgnore = ['\.pyc$']
