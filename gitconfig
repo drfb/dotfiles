@@ -1,6 +1,3 @@
-[user]
-    email = user@domain
-    name = John Doe
 [alias]
     ck = checkout
     cm = commit -m
