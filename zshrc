@@ -1,7 +1,6 @@
 export ZSH=/home/dan/.oh-my-zsh
 
 ZSH_THEME="eastwood"
-COMPLETION_WAITING_DOTS="true"
 DISABLE_UNTRACKED_FILES_DIRTY="true"
 
 plugins=(
