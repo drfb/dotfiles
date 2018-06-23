@@ -13,6 +13,7 @@ Plugin 'roman/golden-ratio'
 Plugin 'raimondi/delimitmate'
 Plugin 'morhetz/gruvbox'
 Plugin 'nvie/vim-flake8'
+Plugin 'bkad/CamelCaseMotion'
 call vundle#end()
 
 " General settings
@@ -82,3 +83,6 @@ let NERDTreeIgnore = ['\.pyc$']
 
 " Flake8 plugin settings
 autocmd BufWritePost *.py call Flake8() " Run Flake8 check in every writes
+
+" CamelCaseMotion plugin settings
+call camelcasemotion#CreateMotionMappings('<leader>') " Default mapping
