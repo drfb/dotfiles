@@ -1,9 +1,16 @@
 [alias]
     ck = checkout
     cm = commit -m
+    cs = commit -S -m
     st = status
     am = commit --amend
+    as = commit --amend -S
     ls = log --pretty=format:"%C(green)%h\\ %Creset%s%Cblue\\ [%cn]\\ %C(yellow)[%ad]%Cred%d" --decorate --date=relative
     br = branch
+    fe = fetch
+    pl = pull
 [core]
     editor = vim
+    excludesfile = ~/.gitignore
+[push]
+	default = current
